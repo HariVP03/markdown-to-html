@@ -9,3 +9,28 @@ impl File {
         std::env::args().nth(n)
     }
 }
+
+#[macro_export]
+macro_rules! get_target_file_content {
+    () => {
+        {
+            let file_name: String = match File::get_params(1) {
+                Some(file) => file,
+                None => {
+                    println!("Please provide a file name");
+                    return;
+                }
+            };
+
+            let file_content = match File::access_file(file_name) {
+                Ok(content) => content,
+                Err(error) => {
+                    println!("Error: {}", error.to_string());
+                    return;
+                }
+            };
+
+            file_content
+        }
+    };
+}
