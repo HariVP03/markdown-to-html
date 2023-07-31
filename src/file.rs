@@ -10,7 +10,6 @@ impl File {
     }
 }
 
-#[macro_export]
 macro_rules! get_target_file_content {
     () => {
         {

@@ -1,9 +1,11 @@
-use crate::utils::File;
+use crate::file::File;
 
-pub mod utils;
+#[macro_use]
+pub mod file;
+pub mod parser;
 
 fn main() {
-    let file_content: String = crate::get_target_file_content!();
+    let file_content: String = get_target_file_content!();
 
-    println!("{}", file_content);
+    println!("{}", &file_content);
 }
